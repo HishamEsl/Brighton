@@ -1,0 +1,39 @@
+@import "./variables";
+
+// main heading of page h1
+
+.main-heading {
+  h1 {
+    font-size: $fs-xlg;
+    font-weight: $fw-sm;
+    color: #fff;
+    line-height: 77px;
+  }
+}
+
+// heading
+.heading {
+  color: #fff;
+  h2 {
+    font-size: $fs-lg;
+    font-weight: $fw-sm;
+    margin-bottom: 55px;
+  }
+  .card {
+    background-color: $card-color;
+    padding: 32px;
+    p {
+      margin-bottom: 48px;
+      font-size: $fs-xs;
+      font-weight: $fw-sm;
+
+  
+    }
+  }
+}
+
+//text bold
+.txt-bold {
+  font-size: $fs-m;
+  font-weight: $fw-lg;
+}

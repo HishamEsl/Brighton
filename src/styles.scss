@@ -1,1 +1,28 @@
 /* You can add global styles to this file, and also import other style files */
+
+
+/* Importing Bootstrap SCSS file. */
+@import '~bootstrap/scss/bootstrap';
+
+
+@font-face {
+  font-family: "Roboto";
+  src: url(./assets/Fonts/Roboto-Regular.ttf);
+}
+@font-face {
+  font-family: "Prata";
+  src: url(./assets/Fonts/Prata-Regular.ttf);
+}
+
+* {
+  font-family: "Roboto" !important;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: "Prata" !important;
+}
