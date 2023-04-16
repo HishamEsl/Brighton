@@ -1,0 +1,25 @@
+@import "../../assets/scss/variables";
+@import "../../assets/scss/global";
+
+// Start Footer
+
+footer{
+    background-color: $dark-blue-color;
+    padding: 36px 0;
+    color: #FFF;
+
+    .logo{
+        margin-bottom: 32px;
+
+        img{
+            width: 200px;
+        }
+    }
+
+    ul li {
+        margin-right: 32px;
+        @media (max-width: 767px) {
+          margin-right: 16px;
+        }
+      }
+}

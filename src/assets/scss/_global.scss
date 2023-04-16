@@ -3,11 +3,12 @@
 // main heading of page h1
 
 .main-heading {
-  h1 {
-    font-size: $fs-xlg;
-    font-weight: $fw-sm;
-    color: #fff;
-    line-height: 77px;
+  font-size: $fs-xlg;
+  font-weight: $fw-sm;
+  color: #fff;
+  line-height: 77px;
+  @media (max-width: 767px) {
+    font-size: $fs-md;
   }
 }
 
@@ -18,22 +19,127 @@
     font-size: $fs-lg;
     font-weight: $fw-sm;
     margin-bottom: 55px;
+
+    @media (max-width: 767px) {
+      font-size: $fs-md;
+      font-weight: $fw-sm;
+      margin-bottom: 32px;
+    }
+  }
+  .card-transparent {
+    background-color: #000;
+    border: 0;
   }
   .card {
     background-color: $card-color;
+    border: 1px solid $main-red;
+    border-radius: 0;
     padding: 32px;
     p {
       margin-bottom: 48px;
       font-size: $fs-xs;
       font-weight: $fw-sm;
 
-  
+      @media (max-width: 767px) {
+        font-size: 14px;
+        font-weight: $fw-sm;
+        margin-bottom: 16px;
+      }
+    }
+    //text bold
+    .txt-bold {
+      font-size: $fs-m;
+      font-weight: $fw-lg;
+      @media (max-width: 767px) {
+        font-size: $fs-xs;
+        font-weight: $fw-md;
+      }
+      a {
+        color: #fff;
+      }
     }
   }
 }
 
+.txt-danger {
+  color: $main-red;
+}
 //text bold
 .txt-bold {
+  font-size: $fs-m !important;
+  font-weight: $fw-lg !important;
+  @media (max-width: 767px) {
+    font-size: $fs-xs !important;
+    font-weight: $fw-md !important;
+  }
+}
+
+//Buttons
+
+.btn-main {
+  background-color: $main-red;
+  color: #fff !important;
+  padding: 16px 64px !important;
   font-size: $fs-m;
-  font-weight: $fw-lg;
+  border-radius: 0;
+  &:hover {
+    background-color: #000;
+    color: $main-red !important;
+    border: 1px solid $main-red;
+  }
+  @media (max-width: 767px) {
+    padding: 4px 16px !important;
+  }
+}
+
+// Team Card
+
+.card-overly {
+  background-color: #000000;
+  margin-bottom: 64px;
+  .img-content {
+    position: relative;
+  }
+
+  .overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    visibility: hidden;
+    opacity: 0.7; /* set opacity to 0.7 */
+    background-color: black; /* add a black background */
+    transition: opacity 0.5s; /* add a transition effect */
+  }
+
+  .overlay p {
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: white;
+    font-size: 14px;
+    text-align: center;
+  }
+
+  .img-content:hover .overlay {
+    visibility: visible;
+  }
+
+  .card-body {
+    margin-top: 24px;
+
+    img {
+      height: 280px;
+    }
+    h5 {
+      font-size: $fs-md;
+      font-weight: $fw-lg;
+    }
+    p {
+      font-weight: $fw-sm;
+      font-size: $fs-xs;
+    }
+  }
 }

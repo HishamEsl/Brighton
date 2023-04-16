@@ -22,7 +22,46 @@ h1,
 h2,
 h3,
 h4,
-h5,
 h6 {
   font-family: "Prata" !important;
 }
+
+
+.owl-carousel{
+  padding: 55px 120px !important;
+  @media (max-width: 767px) {
+    padding: 10x 60px !important;
+  }
+}
+
+.owl-prev-b{
+  position: absolute;
+  left: 0px;
+  top: 50%;
+  background-image: url('./assets/IconPNG/Circleprevious.png') !important;
+  background-color: rgb(0, 0, 0) !important;
+
+}
+.owl-next-b{
+  position: absolute;
+  right: 0px;
+  top: 50%;
+  background-image: url('./assets/IconPNG/Circlenext.png') !important;
+  background-color: rgb(0, 0, 0) !important;
+
+}
+
+
+.owl-nav {
+  visibility: hidden;
+  background-image: '',
+  
+  
+  }
+  
+  .owl-carousel .nav-button {
+      height: 64px !important;
+      width: 64px  !important;
+  
+  
+    }

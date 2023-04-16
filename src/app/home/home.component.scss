@@ -1,0 +1,185 @@
+@import "../../assets/scss/variables";
+@import "../../assets/scss/global";
+
+//Start Landing Section
+
+.landing {
+  background-image: url("../../assets/Photos/landingImage.png");
+  background-size: cover;
+  height: 825px;
+  position: relative;
+
+  @media (max-width: 767px) {
+    height: 60vh;
+  }
+
+  .txt {
+    position: absolute;
+    left: 5%;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 50%;
+    padding: 15px;
+    color: #fff;
+
+    @media (max-width: 767px) {
+      width: 100%;
+    }
+
+    .content {
+      width: 100%;
+      position: relative;
+      ::after {
+        content: "";
+        position: absolute;
+        top: 10px;
+        left: 0;
+        color: brown;
+        height: 10px;
+        width: 200px;
+      }
+      @media (max-width: 767px) {
+        width: 100%;
+      }
+    }
+  }
+}
+
+// Start our-dive section
+
+.our-dive {
+  background-color: rgba($color: #000000, $alpha: 1);
+  color: #fff;
+
+  img {
+    width: 100%;
+  }
+
+  .card {
+    border-left: 0;
+  }
+}
+
+// start dive-with-us section
+.dive-with-us {
+  background-color: rgba($color: #000000, $alpha: 1);
+  color: #fff;
+
+  img {
+    width: 100%;
+  }
+  .card {
+    border-right: 0;
+    p:first-of-type {
+      svg {
+        margin-right: 8px;
+      }
+    }
+  }
+}
+
+//start guest-driver section
+.guest-driver {
+  background-color: rgba($color: #000000, $alpha: 1);
+  color: #fff;
+  img {
+    width: 100%;
+  }
+  .card {
+    border-left: 0;
+
+    ul {
+      padding-left: 100px;
+      @media (max-width: 767px) {
+        padding-left: 48px;
+      }
+      li {
+        margin-bottom: 48px;
+        @media (max-width: 767px) {
+          margin-bottom: 32px;
+        }
+        &:nth-child(even) {
+          margin-left: 64px;
+          @media (max-width: 767px) {
+            margin-left: 32px;
+          }
+        }
+        &::marker {
+          color: $main-red;
+          width: 24px;
+          height: 24px;
+        }
+      }
+    }
+  }
+}
+
+// start welcome-guests section
+.welcome-guests {
+  background-image: url("../../assets/Photos/jeremy-bishop-dRltIJMupdc-unsplash.png");
+  background-size: cover;
+  // height: 740px;
+  background-color: #000000;
+  padding: 80px 115px;
+  color: #fff;
+
+  p {
+    margin-bottom: 48px;
+    font-size: $fs-xs;
+    font-weight: $fw-sm;
+    line-height: 30px;
+    a {
+      color: #fff;
+    }
+
+    @media (max-width: 767px) {
+      font-size: 14px;
+      font-weight: $fw-sm;
+      margin-bottom: 16px;
+    }
+   
+  }
+}
+
+// start testmonials section 
+.testmonials{
+  background-color: #000000;
+  padding: 100px 0;
+  color: #fff;
+  @media (max-width: 767px) {
+    padding: 40px 0;
+  }
+
+  h2{
+    font-size: $fs-lg;
+    font-weight: $fw-sm;
+  }
+
+  .img-content{
+    @media (max-width: 767px) {
+   display: none;
+    }
+    img{
+      width: 480px;
+      height: 390px;
+    }
+  }
+
+  .txt-content{
+    margin-left: 72px;
+    font-weight: $fw-sm;
+    @media (max-width: 767px) {
+     margin-left: 0;
+       }
+    span{
+      font-size: 12px;
+    }
+    p{
+      margin-top: 32px;
+      line-height: 24px;
+      @media (max-width: 767px) {
+       line-height: 16px;
+         }
+    }
+  }
+}
