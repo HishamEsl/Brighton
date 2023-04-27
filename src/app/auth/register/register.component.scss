@@ -1,0 +1,12 @@
+@import "../../../assets/scss/variables";
+@import "../../../assets/scss/global";
+
+
+.register{
+  height: 100vh;
+  overflow: hidden;
+
+  span{
+    color: $main-red;
+  }
+}

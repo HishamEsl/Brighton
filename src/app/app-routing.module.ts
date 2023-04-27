@@ -11,6 +11,7 @@ const routes: Routes = [
   { path: 'gallery', loadChildren: () => import('./gallery/gallery.module').then(m => m.GalleryModule) },
   { path: 'contactUS', loadChildren: () => import('./contact-us/contact-us.module').then(m => m.ContactUsModule) },
   { path: 'profile', loadChildren: () => import('./profile/profile.module').then(m => m.ProfileModule) },
+  { path: 'auth', loadChildren: () => import('./auth/auth.module').then(m => m.AuthModule) },
 ];
 
 @NgModule({
