@@ -10,6 +10,7 @@ const routes: Routes = [
   { path: 'aboutUs', loadChildren: () => import('./about-us/about-us.module').then(m => m.AboutUsModule) },
   { path: 'gallery', loadChildren: () => import('./gallery/gallery.module').then(m => m.GalleryModule) },
   { path: 'contactUS', loadChildren: () => import('./contact-us/contact-us.module').then(m => m.ContactUsModule) },
+  { path: 'profile', loadChildren: () => import('./profile/profile.module').then(m => m.ProfileModule) },
 ];
 
 @NgModule({

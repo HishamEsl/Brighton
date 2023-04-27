@@ -1,0 +1,12 @@
+@import "../../../../assets/scss/variables";
+@import "../../../../assets/scss/global";
+
+
+.info{
+    label{
+font-size: $fs-md;
+@media (max-width: 767px) {
+    font-size: $fs-xs   ;
+  }
+    }
+}

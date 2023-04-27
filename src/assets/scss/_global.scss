@@ -91,11 +91,26 @@
     padding: 4px 16px !important;
   }
 }
-
-.btn-contact{
+.btn-form {
   background-color: $main-red;
   color: #fff !important;
-  padding: 16px  !important;
+  padding: 8px !important;
+  font-size: $fs-s;
+  border-radius: 0;
+  &:hover {
+    background-color: #ffffff;
+    color: $main-red !important;
+    border: 1px solid $main-red;
+  }
+  @media (max-width: 767px) {
+    padding: 4px 16px !important;
+  }
+}
+
+.btn-contact {
+  background-color: $main-red;
+  color: #fff !important;
+  padding: 16px !important;
   font-size: $fs-m;
   border-radius: 0;
   border: 0;

@@ -1,4 +1,4 @@
-<header>
+<header [ngClass]="{'profile-header': isProfileModule}">
     <div class="container">
       <nav class="navbar navbar-expand-lg">
         <!--LOGO-->
@@ -88,7 +88,7 @@
           
           </ul>
           <ul class="navbar-nav mr-auto justify-content-end flex-grow-1">
-            <li class="nav-item">
+            <li class="nav-item" routerLink="/profile">
                 <div class="me-3 d-flex align-items-center" >
                   
                       <img
@@ -98,7 +98,7 @@
                       />
               
                       <div class="text-start ms-2" >
-                        <span class="ms-1">Name</span>
+                        <span class="ms-1 text-white">Name</span>
                       </div>
                   </div>
               </li>
