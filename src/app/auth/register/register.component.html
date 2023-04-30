@@ -1,39 +1,189 @@
 <section class="register container-fluid">
-    <div class="row ">
-    <div class="col-md-6 col-12 ms-0 ps-0">
-        <img src="../../../assets/Photos/register.png" alt="login" srcset="" class="w-100 h-100">
+  <div class="row">
+    <div class="col-md-6 col-12 ms-0 ps-0 img-content overflow-hidden">
+      <img
+        src="../../../assets/Photos/register.png"
+        alt="login"
+        srcset=""
+        class="w-100 h-100"
+      />
     </div>
-    <div class="col-md-6 col-12 mt-5">
-    <div class="w-100">
+    <div class="col-md-6 col-12 mt-5 overflow-auto">
+      <div class="w-100">
         <h2>Create your Account</h2>
-        <p>Already have an account?<span class="cursor" routerLink="/auth/login"> Login </span></p>
-    <form class="mt-5">
-        <div class="mb-3">
-            <label for="formrow-firstname-input">Name</label>
-            <input type="text" class="form-control" id="formrow-firstname-input">
-        </div>
-        <div class="mb-3">
+        <p>
+          Already have an account?<span class="cursor" routerLink="/auth/login">
+            Login
+          </span>
+        </p>
+        <form class="mt-2" [formGroup]="registerForm">
+          <div class="mb-3">
+            <label for="formrow-firstname-input">First Name</label>
+            <input
+              type="text"
+              class="form-control"
+              id="formrow-firstname-input"
+              formControlName="firstName"
+              [ngClass]="{
+                'is-invalid': f['firstName'].touched && f['firstName'].errors
+              }"
+            />
+            <div
+              *ngIf="f['firstName'].touched && f['firstName'].errors"
+              class="text-danger"
+            >
+              <span *ngIf="f['firstName'].errors?.['required']"
+                >This value is required.!</span
+              >
+            </div>
+          </div>
+          <div class="mb-3">
+            <label for="formrow-firstname-input">Last Name</label>
+            <input
+              type="text"
+              class="form-control"
+              id="formrow-firstname-input"
+              formControlName="lastName"
+              [ngClass]="{
+                'is-invalid': f['lastName'].touched && f['lastName'].errors
+              }"
+            />
+            <div
+              *ngIf="f['lastName'].touched && f['lastName'].errors"
+              class="text-danger"
+            >
+              <span *ngIf="f['lastName'].errors?.['required']"
+                >This value is required.!</span
+              >
+            </div>
+          </div>
+          <div class="mb-3">
+            <label for="formrow-firstname-input">User Name</label>
+            <input
+              type="text"
+              class="form-control"
+              id="formrow-firstname-input"
+              formControlName="userName"
+              [ngClass]="{
+                'is-invalid': f['userName'].touched && f['userName'].errors
+              }"
+            />
+            <div
+              *ngIf="f['userName'].touched && f['userName'].errors"
+              class="text-danger"
+            >
+              <span *ngIf="f['userName'].errors?.['required']"
+                >This value is required.!</span
+              >
+            </div>
+          </div>
+          <div class="mb-3">
             <label for="formrow-firstname-input">Email</label>
-            <input type="email" class="form-control" id="formrow-firstname-input">
-        </div>
-        <div class="mb-3">
+            <input
+              type="email"
+              class="form-control"
+              id="formrow-firstname-input"
+              formControlName="email"
+              [ngClass]="{
+                'is-invalid': f['email'].touched && f['email'].errors
+              }"
+            />
+            <div
+              *ngIf="f['email'].touched && f['email'].errors"
+              class="text-danger"
+            >
+              <span *ngIf="f['email'].errors?.['required']"
+                >This value is required.!</span
+              >
+              <span *ngIf="f['email'].errors?.['email']"
+                >This value should be email!</span
+              >
+            </div>
+          </div>
+          <div class="mb-3">
             <label for="formrow-firstname-input">Password</label>
-            <input type="password" class="form-control" id="formrow-firstname-input">
-        </div>
-    
-        <div class="mb-3">
+            <input
+              type="password"
+              class="form-control"
+              id="formrow-firstname-input"
+              formControlName="password"
+              [ngClass]="{
+                'is-invalid': f['password'].touched && f['password'].errors
+              }"
+            />
+            <div
+              *ngIf="f['password'].touched && f['password'].errors"
+              class="text-danger"
+            >
+              <span *ngIf="f['password'].errors?.['required']"
+                >This value is required.!</span
+              >
+              <span *ngIf="f['password'].errors?.['pattern']"
+                >Password must have at least 8 characters, including at least one uppercase letter, one lowercase letter, and one number.!</span
+              >
+            </div>
+          </div>
+
+          <div class="mb-3">
             <label for="formrow-firstname-input">Confirm Password</label>
-            <input type="password" class="form-control" id="formrow-firstname-input">
-        </div>
-    
-        <div class="mb-3">
+            <input
+              type="password"
+              class="form-control"
+              id="formrow-firstname-input"
+              formControlName="confirmpwd"
+              [ngClass]="{
+                'is-invalid': f['confirmpwd'].touched && f['confirmpwd'].errors
+              }"
+            />
+
+
+              <div
+              *ngIf="f['confirmpwd'].touched && f['confirmpwd'].errors"
+              class="text-danger"
+            >
+              <span *ngIf="f['confirmpwd'].errors?.['required']"
+                >This value is required.!</span
+              >
+              <span *ngIf="f['confirmpwd'].errors?.['mustMatch']">This value should be the same.</span>
+            </div>
+
+          </div>
+
+          <div class="mb-3">
+            <label for="formrow-firstname-input">Phone Number</label>
+            <input
+              type="password"
+              class="form-control"
+              id="formrow-firstname-input"
+              formControlName="phoneNumber"
+              [ngClass]="{
+                'is-invalid': f['phoneNumber'].touched && f['phoneNumber'].errors
+              }"
+            />
+
+
+              <div
+              *ngIf="f['phoneNumber'].touched && f['phoneNumber'].errors"
+              class="text-danger"
+            >
+              <span *ngIf="f['phoneNumber'].errors?.['required']"
+                >This value is required.!</span
+              >
+                <!-- <div *ngIf="myForm.get('mobileNumber').errors.pattern">Mobile number is invalid</div> -->
+              <span *ngIf="f['phoneNumber'].errors?.['pattern']">Mobile number is invalid.</span>
+            </div>
+
+          </div>
+
+
+          <div class="mb-3">
             <div class="d-grid gap-2">
-                <button class="btn btn-form" type="button">Login </button>
-              </div>
-        </div>
-    
-    </form>
+              <button class="btn btn-form" type="button"   [disabled]="registerForm.invalid"
+              (click)="onRegisterClick()">register</button>
+            </div>
+          </div>
+        </form>
+      </div>
     </div>
-    </div>
-    </div>
-    </section>
+  </div>
+</section>

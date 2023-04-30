@@ -4,8 +4,10 @@
 
 .register{
   height: 100vh;
-  overflow: hidden;
-
+  // overflow: hidden;
+.img-content{
+  height: 100vh;
+}
   span{
     color: $main-red;
   }
