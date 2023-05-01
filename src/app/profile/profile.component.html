@@ -2,9 +2,10 @@
   <div class="mb-3 row align-items-center"  *ngIf="user$ |async as user">
     <div class="col-md-2 col-6">
       <img
+      *ngIf="user.image"
         src="{{user.image.path}}"
         class="avatar-xs w-100 rounded-circle"
-        alt="img"
+        alt="Profile Image"
       />
     </div>
     <div class="col-md-10 col-6 d-flex justify-content-between">
