@@ -187,79 +187,26 @@
         <h2>Meet Our Team</h2>
       </div>
     </div>
-    <div class="row">
-      <div class="col-md-3 col-6">
+    <div class="row" *ngIf="teams$|async as teams">
+      <div class="col-md-3 col-6" *ngFor="let team of teams">
         <div class="card-overly text-center">
           <div class="img-content">
             <img
-              src="../../assets/Photos/team1.png"
+              src="{{team.user.image.path}}"
               class="card-img-top"
               alt="..."
             />
             <div class="overlay">
-              <p>Text to display on hover</p>
+              <p>{{team.jobDescription}}</p>
             </div>
           </div>
           <div class="card-body">
-            <h5 class="card-title">AI Locke</h5>
-            <p class="card-text">Chairman & Equipment Officer</p>
+            <h5 class="card-title">{{team.userName}}</h5>
+            <p class="card-text">{{team.position}}</p>
           </div>
         </div>
       </div>
-      <div class="col-md-3 col-6">
-        <div class="card-overly text-center">
-          <div class="img-content">
-            <img
-              src="../../assets/Photos/team1.png"
-              class="card-img-top"
-              alt="..."
-            />
-            <div class="overlay">
-              <p>Text to display on hover</p>
-            </div>
-          </div>
-          <div class="card-body">
-            <h5 class="card-title">AI Locke</h5>
-            <p class="card-text">Chairman & Equipment Officer</p>
-          </div>
-        </div>
-      </div>
-      <div class="col-md-3 col-6">
-        <div class="card-overly text-center">
-          <div class="img-content">
-            <img
-              src="../../assets/Photos/team1.png"
-              class="card-img-top"
-              alt="..."
-            />
-            <div class="overlay">
-              <p>Text to display on hover</p>
-            </div>
-          </div>
-          <div class="card-body">
-            <h5 class="card-title">AI Locke</h5>
-            <p class="card-text">Chairman & Equipment Officer</p>
-          </div>
-        </div>
-      </div>
-      <div class="col-md-3 col-6">
-        <div class="card-overly text-center">
-          <div class="img-content">
-            <img
-              src="../../assets/Photos/team1.png"
-              class="card-img-top"
-              alt="..."
-            />
-            <div class="overlay">
-              <p>Text to display on hover</p>
-            </div>
-          </div>
-          <div class="card-body">
-            <h5 class="card-title">AI Locke</h5>
-            <p class="card-text">Chairman & Equipment Officer</p>
-          </div>
-        </div>
-      </div>
+
     </div>
   </div>
 </section>
