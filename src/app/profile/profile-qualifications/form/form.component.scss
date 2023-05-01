@@ -1,2 +1,7 @@
 @import "../../../../assets/scss/variables";
 @import "../../../../assets/scss/global";
+
+.card-img {
+  object-fit: cover;
+  max-height: 600px;
+}

@@ -56,9 +56,10 @@
             <div class="col-12">
               <div class="mb-3">
                 <label for="image-upload">Image</label>
-                <input type="file" id="image-upload" class="d-block" name="image-upload">
-            
-            
+                <input type="file" id="image-upload" class="d-block" name="image-upload" (change)="onFileSelected($event)">
+                <div class="card mt-3" *ngIf="imageUrl">
+                <img [src]="imageUrl"  class="w-100  card-img">
+            </div>
             </div>
             </div>
           </div>
