@@ -5,7 +5,8 @@ import { ProfileQualificationsRoutingModule } from './profile-qualifications-rou
 import { ProfileQualificationsComponent } from './profile-qualifications.component';
 import { ContentComponent } from './content/content.component';
 import { FormComponent } from './form/form.component';
-import { NgbNavModule } from '@ng-bootstrap/ng-bootstrap';
+import { NgbModule, NgbNavModule } from '@ng-bootstrap/ng-bootstrap';
+import { SharedModule } from 'src/app/shared/shared.module';
 
 @NgModule({
   declarations: [
@@ -13,6 +14,12 @@ import { NgbNavModule } from '@ng-bootstrap/ng-bootstrap';
     ContentComponent,
     FormComponent,
   ],
-  imports: [CommonModule, ProfileQualificationsRoutingModule, NgbNavModule],
+  imports: [
+    CommonModule,
+    ProfileQualificationsRoutingModule,
+    NgbNavModule,
+    SharedModule,
+    NgbModule,
+  ],
 })
 export class ProfileQualificationsModule {}

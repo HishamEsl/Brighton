@@ -1,8 +1,8 @@
 <section class="container profile">
-  <div class="mb-3 row align-items-center">
+  <div class="mb-3 row align-items-center"  *ngIf="user$ |async as user">
     <div class="col-md-2 col-6">
       <img
-        src="../../assets/Photos/avatar1.png"
+        src="{{user.image.path}}"
         class="avatar-xs w-100 rounded-circle"
         alt="img"
       />
@@ -10,11 +10,11 @@
     <div class="col-md-10 col-6 d-flex justify-content-between">
       <div class="media mb-3 d-flex">
         <div class="media-body">
-          <h5 class="mt-0 mb-1 font-size-15">John Luiz</h5>
-          <p class="text-muted">JohnLuizjk@gmail.com</p>
+          <h5 class="mt-0 mb-1 font-size-15">{{user.userName}}</h5>
+          <p class="text-muted">{{user.email}}</p>
         </div>
       </div>
-      <div>
+      <div (click)="logout()">
         <svg
           width="32"
           height="32"

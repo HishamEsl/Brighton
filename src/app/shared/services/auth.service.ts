@@ -16,4 +16,6 @@ export class AuthService {
 
   register = (model: any) =>
     this._http.post(UrlEndpoints.apiRoot + this.registerUrl, model);
+
+    
 }

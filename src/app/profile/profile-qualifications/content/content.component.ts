@@ -5,11 +5,10 @@ import { NgbNavModule } from '@ng-bootstrap/ng-bootstrap';
   selector: 'app-content',
   templateUrl: './content.component.html',
   styleUrls: ['./content.component.scss'],
-  
 })
 export class ContentComponent implements OnInit {
   active = 'top';
-
+  nav: any;
   constructor() {}
 
   ngOnInit(): void {}

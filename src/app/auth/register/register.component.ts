@@ -57,7 +57,7 @@ export class RegisterComponent implements OnInit {
     };
 
     this._authService.register(obj).subscribe((e: any) => {
-      localStorage.setItem('TOKEN', e.token);
+      sessionStorage.setItem('TOKEN', e.token);
       this.router.navigate(['/']);
     });
   }

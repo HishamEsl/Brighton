@@ -4,6 +4,7 @@ import { UrlEndpoints } from '../constant/url-endpoints';
 import { map, shareReplay } from 'rxjs';
 import { IDive } from '../models/dive.model';
 import { ITeam } from '../models/team.model';
+import { IUser } from '../models/user.model';
 
 @Injectable({
   providedIn: 'root',
@@ -11,6 +12,7 @@ import { ITeam } from '../models/team.model';
 export class DivingService {
   private divesURL = 'odata/dives';
   private teamURL = 'odata/employees';
+  private userURL = 'odata/Users';
 
   constructor(private _http: HttpClient) {}
 
@@ -35,4 +37,17 @@ export class DivingService {
       }),
       shareReplay(1)
     );
+
+  getUser(userId: string) {
+    return this._http
+      .get<any[]>(
+        UrlEndpoints.apiRoot + this.userURL + `('${userId}')?$expand=image`
+      )
+      .pipe(
+        map((user: any) => {
+          return user as any[];
+        }),
+        shareReplay(1)
+      );
+  }
 }

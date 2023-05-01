@@ -31,8 +31,10 @@ export class LoginComponent implements OnInit {
       password: this.loginForm.controls['password'].value,
     };
     this._authService.login(user).subscribe((e: any) => {
-      console.log(e);
-      localStorage.setItem('TOKEN', e.token);
+
+      sessionStorage.setItem('TOKEN', e.token);
+      sessionStorage.setItem('UD', e.userId);
+
       this.router.navigate(['/']);
     });
   }
