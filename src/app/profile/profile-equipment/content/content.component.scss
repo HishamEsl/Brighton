@@ -8,4 +8,12 @@
         font-size: $fs-xs   ;
       }
   }
+
+  .remove{
+    svg{
+      path{
+        fill: $main-red;
+      }
+    }
+  }
 }

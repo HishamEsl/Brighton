@@ -189,7 +189,7 @@
     <div class="row" *ngIf="teams$|async as teams">
       <div class="col-md-3 col-6" *ngFor="let team of teams">
         <div class="card-overly text-center">
-          <div class="img-content">
+          <div class="img-content" *ngIf="team.user.image">
             <img
               src="{{team.user.image.path}}"
               class="card-img-top"

@@ -1,17 +1,19 @@
 <div class="container">
-<form>
+<form  [formGroup]="infoForm">
     <div class="row mb-3">
 
         <div class="col-md-6">
             <div class="mb-3">
                 <label for="formrow-email-input">Name</label>
-                <input type="text" class="form-control" id="formrow-email-input">
+                <input type="text" class="form-control" id="formrow-email-input" name="name"
+                formControlName="name">
             </div>
         </div>
         <div class="col-md-6">
             <div class="mb-3">
                 <label for="formrow-password-input">Membership Number</label>
-                <input type="text" class="form-control" id="formrow-password-input" />
+                <input type="text" class="form-control" id="formrow-password-input" name="memebershipNumber"
+                formControlName="memebershipNumber" />
             </div>
         </div>
     </div>
@@ -20,13 +22,15 @@
         <div class="col-md-6">
             <div class="mb-3">
                 <label for="formrow-email-input">Email</label>
-                <input type="email" class="form-control" id="formrow-email-input">
+                <input type="email" class="form-control" id="formrow-email-input" name="email"
+                formControlName="email">
             </div>
         </div>
         <div class="col-md-6">
             <div class="mb-3">
                 <label for="formrow-password-input">Phone Number</label>
-                <input type="text" class="form-control" id="formrow-password-input" />
+                <input type="text" class="form-control" id="formrow-password-input" name="phoneNumber"
+                formControlName="phoneNumber"/>
             </div>
         </div>
     </div>
@@ -35,32 +39,26 @@
         <div class="col-md-6">
             <div class="mb-3">
                 <label for="formrow-email-input">Adress</label>
-                <input type="email" class="form-control" id="formrow-email-input">
+                <input type="email" class="form-control" id="formrow-email-input" name="address"
+                formControlName="address">
             </div>
         </div>
         <div class="col-md-6">
             <div class="mb-3">
                 <label for="formrow-password-input">Nationality</label>
-                <input type="text" class="form-control" id="formrow-password-input" />
+                <input type="text" class="form-control" id="formrow-password-input" name="nationality"
+                formControlName="nationality" />
             </div>
         </div>
     </div>
-    <div class="row mb-3">
 
-        <div class="col-md-6 ">
-            <div class="mb-3">
-                <label for="formrow-email-input">password</label>
-                <input type="email" class="form-control" id="formrow-email-input">
-            </div>
-        </div>
-       
-    </div>
     <div class="row mb-3">
             <div class="col-md-6">
                 <label for="formrow-email-input"></label>
     
                     <div class="d-grid gap-2">
-                        <button class="btn btn-form" type="button">Save</button>
+                        <button class="btn btn-form" type="button" [disabled]="infoForm.invalid"
+                        (click)="onSubmitClicked()" >Update</button>
                       </div>
         
             </div>

@@ -1,70 +1,115 @@
 <div class="container">
-    <form>
-        <div class="row mb-3">
-    
-            <div class="col-md-6">
-                <div class="mb-3">
-                    <label for="formrow-email-input">Equipment Name</label>
-                    <input type="text" class="form-control" id="formrow-email-input">
-                </div>
-            </div>
-            <div class="col-md-6">
-                <div class="mb-3">
-                    <label for="formrow-password-input">Num of parts</label>
-                    <input type="text" class="form-control" id="formrow-password-input" />
-                </div>
-            </div>
+  <form [formGroup]="equipmentForm">
+    <div class="row mb-3">
+      <div class="col-md-6">
+        <div class="mb-3">
+          <label for="name">Equipment Name</label>
+          <input type="text" class="form-control"  id="name"
+          formControlName="name" />
         </div>
-        <div class="row mb-3">
-    
-            <div class="col-md-6">
-                <div class="mb-3">
-                    <label for="formrow-email-input">Part Name</label>
-                    <input type="text" class="form-control" id="formrow-email-input">
-                </div>
-            </div>
-            <div class="col-md-6">
-                <div class="row">
-                    <div class="col-6">
-                        <div class="mb-3">
-                            <label for="formrow-password-input">Purchase Date</label>
-                            <input type="text" class="form-control" id="formrow-password-input" />
-                        </div>
-                    </div>
-                    <div class="col-6">
-                        <div class="mb-3">
-                            <label for="formrow-password-input">Expiry Date</label>
-                            <input type="text" class="form-control" id="formrow-password-input" />
-                        </div>
-                    </div>
-                </div>
-            </div>
+      </div>
+    </div>
+  <!-- Start Part -->
+  <div class="class-room mb-2" formArrayName="parts">
+    <ng-container
+      *ngFor="
+        let part of getPart().controls;
+        let partIndex = index
+      "
+    >
+<div [formGroupName]="partIndex">
+    <div class="row mb-3 align-items-end">
+      <div class="col-md-4">
+        <div class="">
+          <label for="name">Part Name</label>
+          <input type="text" class="form-control"  id="name"
+          formControlName="name"/>
         </div>
-        <div class="row mb-3">
-    
-            <div class="col-md-6">
-                <div class="mb-3">
-                    <label for="formrow-email-input">Last Service Date</label>
-                    <input type="email" class="form-control" id="formrow-email-input">
-                </div>
+      </div>
+      <div class="col-md-6">
+        <div class="row">
+          <div class="col-6">
+            <div class="">
+              <label for="purchaseDate">Purchase Date</label>
+              <input
+                type="datetime-local"
+                class="form-control"
+                id="purchaseDate"
+          formControlName="purchaseDate"
+              />
             </div>
-            <div class="col-md-6">
-                <div class="mb-3">
-                    <label for="formrow-password-input">Reminder Repeat</label>
-                    <input type="text" class="form-control" id="formrow-password-input" />
-                </div>
+          </div>
+          <div class="col-6">
+            <div class="">
+              <label for="expiryDate">Expiry Date</label>
+              <input
+                type="datetime-local"
+                class="form-control"
+                id="expiryDate"
+                formControlName="expiryDate"
+              />
             </div>
+          </div>
         </div>
-        <div class="row mb-3">
-                <div class="col-md-6">
-                    <label for="formrow-email-input"></label>
-        
-                        <div class="d-grid gap-2">
-                            <button class="btn btn-form" type="button">Save</button>
-                          </div>
-            
-                </div>
-           
+      </div>
+      <div class="col-md-2">
+        <button type="button" class="btn btn-danger " (click)="deletePart(partIndex)">
+            Delete Part
+          </button>
+      </div>
+    </div>
+    </div>
+ 
+    </ng-container>
+    </div>
+        <!-- End Subject-->
+        <button
+        type="button"
+        class="btn btn-secondary mb-3"
+        (click)="addPart()"
+      >
+        Add New Part
+      </button>
+
+
+    <!--******************************-->
+    <div class="row mb-3">
+      <div class="col-md-6">
+        <div class="mb-3">
+          <label for="lastServiceDate">Last Service Date</label>
+          <input type="datetime-local" class="form-control" id="lastServiceDate"
+          formControlName="lastServiceDate" />
         </div>
-    </form>
+      </div>
+      <div class="col-md-6" *ngIf="reminders$ |async as reminders">
+        <div class="mb-3">
+          <label for="timeReminder">Reminder Repeat</label>
+
+          <select
+          class="form-select"
+          id="timeReminder"
+          formControlName="timeReminder"
+        >
+          <option value="" selected disabled> Select Reminder Repeat</option>
+          <option
+            [value]="remender.id"
+            *ngFor="let remender of reminders"
+          >
+            {{ remender.name }}
+          </option>
+        </select>
+        </div>
+      </div>
+    </div>
+    <div class="row mb-3">
+      <div class="col-md-6">
+        <label for="formrow-email-input"></label>
+
+        <div class="d-grid gap-2">
+          <button class="btn btn-form" type="button"  (click)="onSubmitClicked()"
+          [disabled]="equipmentForm.invalid">Save</button>
+        </div>
+      </div>
+    </div>
+  </form>
 </div>
