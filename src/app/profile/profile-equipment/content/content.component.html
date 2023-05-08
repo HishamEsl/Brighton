@@ -17,7 +17,8 @@
       </a>
     </div>
   </div>
-  <div *ngIf="euipments$ | async as equipments">
+  <div *ngIf="euipments$ | async as equipments ">
+ 
     <div class="content card p-4 mt-5" *ngFor="let equipment of equipments">
       <div class="row mb-3">
         <div class="col-12 d-flex justify-content-between">
@@ -74,5 +75,17 @@
         </div>
       </div>
     </div>
+
+
+    <div *ngIf="equipments.length<=0">
+      <p>
+        <ngb-alert [dismissible]="false" type="info">
+          <strong>info!</strong> No equipment Avaliable Now .
+        </ngb-alert>
+      </p>
+    </div>
+ 
   </div>
+
+  
 </section>

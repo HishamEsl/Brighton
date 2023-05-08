@@ -59,6 +59,15 @@
             <img class="card-img-top cursor" src="{{qualification.image.path}}" alt="Qualification Image" (click)="selectQualification(qualification)" [ngClass]="{ 'selected': qualification === selectedQualification }" >
           </div>
         </div>
+
+        
+    <div *ngIf="qualifications.length<=0">
+      <p>
+        <ngb-alert [dismissible]="false" type="info">
+          <strong>info!</strong> No qualification Avaliable Now .
+        </ngb-alert>
+      </p>
+    </div>
       </div>
     </div>
 
