@@ -18,25 +18,49 @@
     </div>
   </div>
 
-  <div class="row">
+  <div class="row mt-5" *ngIf="qualifications$ |async as qualifications">
 
-    
+    <div class="col-md-6 col-12" *ngIf="selectedQualification">  
 
+      <div class="mb-3">
+        <label>Certificate Name</label>
+        <p class="text-muted">{{selectedQualification.name}} </p>
+      </div>
+
+      <div class="mb-3">
+        <label>PADI Number</label>
+        <p class="text-muted">{{selectedQualification.padiNumber}} </p>
+      </div>
+
+      <div class="mb-3">
+        <label>Certificate Date</label>
+        <p class="text-muted">{{selectedQualification.certificateDate|date}} </p>
+      </div>
+      <div class="mb-3">
+        <label>Instructor Name</label>
+        <p class="text-muted">{{selectedQualification.instructorName}} </p>
+      </div>
+      <div class="mb-3">
+        <label>Location</label>
+        <p class="text-muted">{{selectedQualification.location}} </p>
+      </div>
+      <div class="mb-3">
+        <label>Description</label>
+
+        <p class="text-muted">{{selectedQualification.description}} </p>
+      </div>
   
 
-      <!-- <nav ngbNav #nav="ngbNav" class="nav-tabs">
-        <ng-container ngbNavItem *ngFor="let i of [1,1,1,1,1]">
-          <a ngbNavLink>Home</a>
-          <ng-template ngbNavContent>
-              <div class="p-2 row w-100">
-           fjgdjg
-    
-              </div>
-          </ng-template>
-      </ng-container>
- 
-        </nav>
-        <div [ngbNavOutlet]="nav" class="mt-2"></div> -->
+    </div>
+    <div class="col-md-6 col-12">
+      <div class="row">
+        <div class="col-6 mb-3" *ngFor="let qualification of qualifications">
+          <div class="card">
+            <img class="card-img-top cursor" src="{{qualification.image.path}}" alt="Qualification Image" (click)="selectQualification(qualification)" [ngClass]="{ 'selected': qualification === selectedQualification }" >
+          </div>
+        </div>
+      </div>
+    </div>
 
   </div>
 </section>

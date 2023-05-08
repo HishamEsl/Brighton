@@ -12,16 +12,40 @@ import { Router } from '@angular/router';
 export class ProfileComponent implements OnInit {
   userId: any = sessionStorage.getItem('UD');
   user$!: Observable<any>;
-  constructor(private _divingService: DivingService , private router: Router) {
+
+  base64String!: string;
+
+  constructor(private _divingService: DivingService, private router: Router) {
     this.user$ = this._divingService.getUser(this.userId);
+
   }
 
   ngOnInit(): void {}
 
+  convertToBase64(event: any) {
+    const file = event.target.files[0];
+    const reader = new FileReader();
+
+    reader.onloadend = () => {
+      this.base64String = reader.result as string;
+
+
+      const obj = {
+        path: this.base64String,
+      };
+      this._divingService.updateUserImage(this.userId, obj).subscribe((e) => {
+        this.user$ = this._divingService.getUser(this.userId);
+      });
+      // You can use the base64String here or pass it to another function
+    };
+
+    reader.readAsDataURL(file);
+  }
+
   logout() {
     sessionStorage.removeItem('UD');
     sessionStorage.removeItem('TOKEN');
-    this.router.navigate(['/'])
-    
+    sessionStorage.removeItem('US');
+    this.router.navigate(['/']);
   }
 }

@@ -7,6 +7,7 @@ import { ITeam } from '../models/team.model';
 import { IUser } from '../models/user.model';
 import { IEquipment } from '../models/profileEquipment.model';
 import { IRemender } from '../models/reminder.model';
+import { IQualifications } from '../models/profileQualification.model';
 
 @Injectable({
   providedIn: 'root',
@@ -17,6 +18,7 @@ export class DivingService {
   private userURL = 'odata/Users';
   private equipmentURL = 'odata/Equipments';
   private remindersURL = 'odata/reminders';
+  private qualificationsURL = 'odata/qualifications';
 
   constructor(private _http: HttpClient) {}
 
@@ -65,6 +67,20 @@ export class DivingService {
         shareReplay(1)
       );
   }
+  profileQualifications(userId: string) {
+    return this._http
+      .get<IQualifications[]>(
+        UrlEndpoints.apiRoot +
+          this.qualificationsURL +
+          `?$filter=UserId eq '${userId}'&expand=image`
+      )
+      .pipe(
+        map((equipments: any) => {
+          return equipments['value'] as IQualifications[];
+        }),
+        shareReplay(1)
+      );
+  }
 
   getUser(userId: string) {
     return this._http
@@ -82,6 +98,11 @@ export class DivingService {
   updateUser = (userId: string, user: IUser) =>
     this._http.put(UrlEndpoints.apiRoot + this.userURL + `('${userId}')`, user);
 
+  updateUserImage = (userId: string, imagePath: any) =>
+    this._http.patch(
+      UrlEndpoints.apiRoot + this.userURL + `('${userId}')`,
+      imagePath
+    );
   // POst Equipment
 
   PostEquipment(model: any) {
@@ -90,6 +111,19 @@ export class DivingService {
       .pipe(
         map((equipment: any) => {
           return equipment as any;
+        }),
+        shareReplay(1)
+      );
+  }
+
+  // POst qualification
+
+  Postqualification(model: any) {
+    return this._http
+      .post<any>(UrlEndpoints.apiRoot + this.qualificationsURL, model)
+      .pipe(
+        map((qualification: any) => {
+          return qualification as any;
         }),
         shareReplay(1)
       );

@@ -51,7 +51,7 @@ export class FormComponent implements OnInit {
 
   private _checkEditMode() {
     this._divingService.getUser(this.userId).subscribe((user: any) => {
-      console.log(user);
+   
       this.infoForm.setValue({
         name: user.name,
         memebershipNumber: user.memebershipNumber,

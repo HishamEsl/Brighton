@@ -3,6 +3,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MustMatch } from './validation.mustconfirm';
 import { AuthService } from 'src/app/shared/services/auth.service';
 import { Router } from '@angular/router';
+import { catchError, throwError } from 'rxjs';
 
 @Component({
   selector: 'app-register',
@@ -11,6 +12,7 @@ import { Router } from '@angular/router';
 })
 export class RegisterComponent implements OnInit {
   registerForm!: FormGroup;
+  errorMessage!: string;
   constructor(
     private formBuilder: FormBuilder,
     private _authService: AuthService,
@@ -56,10 +58,19 @@ export class RegisterComponent implements OnInit {
       phoneNumber: this.registerForm.controls['phoneNumber'].value,
     };
 
-    this._authService.register(obj).subscribe((e: any) => {
-      sessionStorage.setItem('TOKEN', e.token);
-      this.router.navigate(['/']);
-    });
+    this._authService
+      .register(obj)
+      .pipe(
+        catchError((error) => {
+          // Handle login error here
+          this.errorMessage = error.error;
+          return throwError(error);
+        })
+      )
+      .subscribe((e: any) => {
+        sessionStorage.setItem('TOKEN', e.token);
+        this.router.navigate(['/']);
+      });
   }
 
   get f() {

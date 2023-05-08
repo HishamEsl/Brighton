@@ -31,6 +31,7 @@ export class ContentComponent implements OnInit {
       if (result.isConfirmed) {
         this._divingService.deleteEquipment(equipmentId).subscribe(() => {
           Swal.fire('Deleted!', 'Your file has been deleted.', 'success');
+          this.euipments$ = this._divingService.profileEquipments(this.userId);
         });
       }
     });

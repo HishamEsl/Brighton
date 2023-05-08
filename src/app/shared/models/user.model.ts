@@ -13,4 +13,5 @@ export interface IUser {
   address: string;
   nationality: string;
   image?: IImage;
+
 }

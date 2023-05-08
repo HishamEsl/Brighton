@@ -37,7 +37,7 @@ export class FormComponent implements OnInit {
       Swal.fire({
         position: 'top-end',
         icon: 'success',
-        title: 'Ticket has been Created ',
+        title: ' Equipment has been Created ',
         showConfirmButton: false,
         timer: 1500,
       });

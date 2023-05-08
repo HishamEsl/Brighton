@@ -2,11 +2,25 @@
 @import "../../../../assets/scss/global";
 
 
-.info{
+
     label{
 font-size: $fs-md;
 @media (max-width: 767px) {
     font-size: $fs-xs   ;
   }
     }
+
+  
+
+
+.card{
+  img{
+    height: 200px;
+  }
+}
+
+
+
+.selected {
+  border: 2px solid $main-red; /* Customize the border style as per your preference */
 }

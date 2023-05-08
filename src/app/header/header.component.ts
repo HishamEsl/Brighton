@@ -11,7 +11,8 @@ export class HeaderComponent implements OnInit {
   public isColapsed = true;
   isProfileModule = false;
   isAuthModule = false;
-
+  userName = sessionStorage.getItem('US');
+  
   constructor(private router: Router) {}
 
   ngOnInit(): void {

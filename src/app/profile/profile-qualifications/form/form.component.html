@@ -1,52 +1,90 @@
 <div class="container">
-<form>
+<form [formGroup]="qualificationForm">
   <div class="row">
     <div class="col-md-6 col-12">
       <div class="row mb-3">
         <div class="col-12">
           <div class="mb-3">
-            <label for="formrow-email-input">Certificate Name</label>
-            <input type="text" class="form-control" id="formrow-email-input" />
+            <label for="name">Certificate Name</label>
+            <input type="text" class="form-control" id="name" name="name"
+            formControlName="name" [ngClass]="{
+              'is-invalid': f['name'].touched && f['name'].errors
+            }"  />
+            <div *ngIf="f['name'].touched && f['name'].errors" class="text-danger">
+              <span *ngIf="f['name'].errors?.['required']">This value is required.!</span>
+            </div>
           </div>
         </div>
       </div>
       <div class="row mb-3">
         <div class="col-12">
           <div class="mb-3">
-            <label for="formrow-email-input">PADI Number</label>
-            <input type="text" class="form-control" id="formrow-email-input" />
+            <label for="padiNumber">PADI Number</label>
+            <input type="text" class="form-control" id="padiNumber"  name="padiNumber"
+            formControlName="padiNumber" [ngClass]="{
+              'is-invalid': f['padiNumber'].touched && f['padiNumber'].errors
+            }"  />
+            <div *ngIf="f['padiNumber'].touched && f['padiNumber'].errors" class="text-danger">
+              <span *ngIf="f['padiNumber'].errors?.['required']">This value is required.!</span>
+              <span *ngIf="f['padiNumber'].errors?.['pattern']"> Only numbers are allowed.</span>
+            </div>
           </div>
         </div>
       </div>
       <div class="row mb-3">
         <div class="col-12">
           <div class="mb-3">
-            <label for="formrow-email-input">Certificate Date</label>
-            <input type="dateTime" class="form-control" id="formrow-email-input" />
+            <label for="certificateDate">Certificate Date</label>
+            <input type="datetime-local" class="form-control" id="certificateDate" name="certificateDate"
+            formControlName="certificateDate" [ngClass]="{
+              'is-invalid': f['certificateDate'].touched && f['certificateDate'].errors
+            }" />
+            <div *ngIf="f['certificateDate'].touched && f['certificateDate'].errors" class="text-danger">
+              <span *ngIf="f['certificateDate'].errors?.['required']">This value is required.!</span>
+            </div>
           </div>
         </div>
       </div>
       <div class="row mb-3">
         <div class="col-12">
           <div class="mb-3">
-            <label for="formrow-email-input">Instructor Name</label>
-            <input type="text" class="form-control" id="formrow-email-input" />
+            <label for="instructorName">Instructor Name</label>
+            <input type="text" class="form-control" id="instructorName" name="instructorName"
+            formControlName="instructorName" [ngClass]="{
+              'is-invalid': f['instructorName'].touched && f['instructorName'].errors
+            }" />
+            <div *ngIf="f['instructorName'].touched && f['instructorName'].errors" class="text-danger">
+              <span *ngIf="f['instructorName'].errors?.['required']">This value is required.!</span>
+            </div>
+          </div>
+        </div>
+      </div>
+   
+      <div class="row mb-3">
+        <div class="col-12">
+          <div class="mb-3">
+            <label for="location">Location</label>
+            <input type="text" class="form-control" id="location"  name="location"
+            formControlName="location" [ngClass]="{
+              'is-invalid': f['location'].touched && f['location'].errors
+            }" />
+            <div *ngIf="f['location'].touched && f['location'].errors" class="text-danger">
+              <span *ngIf="f['location'].errors?.['required']">This value is required.!</span>
+            </div>
           </div>
         </div>
       </div>
       <div class="row mb-3">
         <div class="col-12">
           <div class="mb-3">
-            <label for="formrow-email-input">Instructor Number</label>
-            <input type="text" class="form-control" id="formrow-email-input" />
-          </div>
-        </div>
-      </div>
-      <div class="row mb-3">
-        <div class="col-12">
-          <div class="mb-3">
-            <label for="formrow-email-input">Location</label>
-            <input type="text" class="form-control" id="formrow-email-input" />
+            <label for="description">Description</label>
+            <input type="text" class="form-control" id="description"  name="description"
+            formControlName="description" [ngClass]="{
+              'is-invalid': f['description'].touched && f['description'].errors
+            }" />
+            <div *ngIf="f['description'].touched && f['description'].errors" class="text-danger">
+              <span *ngIf="f['description'].errors?.['required']">This value is required.!</span>
+            </div>
           </div>
         </div>
       </div>
@@ -56,7 +94,13 @@
             <div class="col-12">
               <div class="mb-3">
                 <label for="image-upload">Image</label>
-                <input type="file" id="image-upload" class="d-block" name="image-upload" (change)="onFileSelected($event)">
+                <input type="file" id="image-upload" accept="image/png,image/gif, image/jpeg" class="d-block" name="image-upload" (change)="onFileSelected($event) ; convertToBase64($event)"  formControlName="image" [ngClass]="{
+                  'is-invalid': f['image'].touched && f['image'].errors
+                }"
+                >
+                <div *ngIf="f['image'].touched && f['image'].errors" class="text-danger">
+                  <span *ngIf="f['image'].errors?.['required']">This value is required.!</span>
+                </div>
                 <div class="card mt-3" *ngIf="imageUrl">
                 <img [src]="imageUrl"  class="w-100  card-img">
             </div>
@@ -70,7 +114,8 @@
         <label for="formrow-email-input"></label>
 
             <div class="d-grid gap-2">
-                <button class="btn btn-form" type="button">Save</button>
+                <button class="btn btn-form" type="button"  [disabled]="qualificationForm.invalid"
+                (click)="onAddQualificationSubmit()">Save</button>
               </div>
 
     </div>
