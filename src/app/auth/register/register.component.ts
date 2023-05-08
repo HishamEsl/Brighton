@@ -31,15 +31,13 @@ export class RegisterComponent implements OnInit {
           '',
           [
             Validators.required,
-            Validators.pattern(
-              /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[a-zA-Z\d]{8,}$/
-            ),
+      
           ],
         ],
         confirmpwd: ['', [Validators.required]],
         phoneNumber: [
           '',
-          [Validators.required, Validators.pattern(/^07\d{9}$/)],
+          [Validators.required],
         ],
       },
       {

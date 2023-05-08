@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { DivingService } from '../shared/services/diving.service';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-contact-us',
@@ -9,14 +11,17 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 export class ContactUsComponent implements OnInit {
   contactForm!: FormGroup;
 
-  constructor(private formBuilder: FormBuilder) {}
+  constructor(
+    private formBuilder: FormBuilder,
+    private _divingService: DivingService
+  ) {}
 
   ngOnInit(): void {
     /* Init Form */
     this.contactForm = this.formBuilder.group({
       name: ['', [Validators.required]],
       email: ['', [Validators.required, Validators.email]],
-      phone: ['', [Validators.required, Validators.pattern('^01[0-9]{9}$')]],
+      phone: ['', [Validators.required]],
       message: [''],
     });
   }
@@ -25,11 +30,21 @@ export class ContactUsComponent implements OnInit {
     const obj: any = {
       name: this.contactForm.controls['name'].value,
       email: this.contactForm.controls['email'].value,
-      phone: this.contactForm.controls['phone'].value,
+      phoneNumber: this.contactForm.controls['phone'].value,
       message: this.contactForm.controls['message'].value,
     };
 
-    console.log(obj);
+    this._divingService.contactUsSendEmail(obj).subscribe(() => {
+      Swal.fire({
+        position: 'top-end',
+        icon: 'success',
+        title: 'The email was successfully sent ',
+        showConfirmButton: false,
+        timer: 1500,
+      });
+    });
+
+    this.contactForm.reset();
   }
   get f() {
     return this.contactForm.controls;

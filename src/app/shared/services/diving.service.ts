@@ -19,6 +19,7 @@ export class DivingService {
   private equipmentURL = 'odata/Equipments';
   private remindersURL = 'odata/reminders';
   private qualificationsURL = 'odata/qualifications';
+  private contactUsURL = 'EmailSender/Contact-us';
 
   constructor(private _http: HttpClient) {}
 
@@ -134,4 +135,17 @@ export class DivingService {
     this._http.delete(
       UrlEndpoints.apiRoot + this.equipmentURL + `(${equipmentId})`
     );
+
+  // Post contactUs Send email
+
+  contactUsSendEmail(model: any) {
+    return this._http
+      .post<any>(UrlEndpoints.apiRoot + this.contactUsURL, model)
+      .pipe(
+        map((contact: any) => {
+          return contact as any;
+        }),
+        shareReplay(1)
+      );
+  }
 }

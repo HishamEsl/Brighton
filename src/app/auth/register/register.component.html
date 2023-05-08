@@ -118,9 +118,7 @@
               <span *ngIf="f['password'].errors?.['required']"
                 >This value is required.!</span
               >
-              <span *ngIf="f['password'].errors?.['pattern']"
-                >Password must have at least 8 characters, including at least one uppercase letter, one lowercase letter, and one number.!</span
-              >
+             
             </div>
           </div>
 
@@ -169,8 +167,7 @@
               <span *ngIf="f['phoneNumber'].errors?.['required']"
                 >This value is required.!</span
               >
-                <!-- <div *ngIf="myForm.get('mobileNumber').errors.pattern">Mobile number is invalid</div> -->
-              <span *ngIf="f['phoneNumber'].errors?.['pattern']">Mobile number is invalid.</span>
+             
             </div>
 
           </div>
