@@ -67,6 +67,8 @@ export class RegisterComponent implements OnInit {
       )
       .subscribe((e: any) => {
         sessionStorage.setItem('TOKEN', e.token);
+        sessionStorage.setItem('US', e.name);
+        sessionStorage.setItem('UD', e.userId);
         this.router.navigate(['/']);
       });
   }
