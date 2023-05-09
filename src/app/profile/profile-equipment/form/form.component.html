@@ -5,7 +5,12 @@
         <div class="mb-3">
           <label for="name">Equipment Name</label>
           <input type="text" class="form-control"  id="name"
-          formControlName="name" />
+          formControlName="name" [ngClass]="{
+            'is-invalid': f['name'].touched && f['name'].errors
+          }" />
+          <div *ngIf="f['name'].touched && f['name'].errors" class="text-danger">
+            <span *ngIf="f['name'].errors?.['required']">This value is required.!</span>
+          </div>
         </div>
       </div>
     </div>
@@ -78,7 +83,13 @@
         <div class="mb-3">
           <label for="lastServiceDate">Last Service Date</label>
           <input type="datetime-local" class="form-control" id="lastServiceDate"
-          formControlName="lastServiceDate" />
+          formControlName="lastServiceDate" [ngClass]="{
+            'is-invalid': f['lastServiceDate'].touched && f['lastServiceDate'].errors
+          }"  />
+
+          <div *ngIf="f['lastServiceDate'].touched && f['lastServiceDate'].errors" class="text-danger">
+            <span *ngIf="f['lastServiceDate'].errors?.['required']">This value is required.!</span>
+          </div>
         </div>
       </div>
       <div class="col-md-6" *ngIf="reminders$ |async as reminders">

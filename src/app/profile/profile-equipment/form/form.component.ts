@@ -41,7 +41,7 @@ export class FormComponent implements OnInit {
         showConfirmButton: false,
         timer: 1500,
       });
-      
+
       this.location.back();
     });
   }
@@ -87,6 +87,10 @@ export class FormComponent implements OnInit {
   /* Delete Class Room */
   deletePart(partIndex: number) {
     this.getPart().removeAt(partIndex);
+  }
+
+  get f() {
+    return this.equipmentForm.controls;
   }
 
   ngOnInit(): void {}
