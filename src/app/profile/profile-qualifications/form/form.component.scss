@@ -1,6 +1,11 @@
 @import "../../../../assets/scss/variables";
 @import "../../../../assets/scss/global";
 
+
+
+.qualfication{
+  min-height: 40vh;
+}
 .card-img {
   object-fit: cover;
   max-height: 600px;

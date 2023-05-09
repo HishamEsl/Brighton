@@ -2,6 +2,7 @@
 @import "../../../../assets/scss/global";
 
 .equipment {
+  min-height: 40vh;
   label {
     font-size: $fs-md;
     @media (max-width: 767px) {
