@@ -21,10 +21,12 @@
 .card{
     border-right: 0;
 }
-ul li{
+ul li,a{
     font-weight: $fw-sm;
     font-size: $fs-md;
     margin-bottom: 32px;
+    color: #fff;
+    text-decoration: none;
 
     @media (max-width: 767px) {
         margin: 8px 0 ;
