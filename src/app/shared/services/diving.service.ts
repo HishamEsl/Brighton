@@ -109,6 +109,10 @@ export class DivingService {
       );
   }
 
+    //Remove Qulification
+    deleteQulification = (qulificationId: number) =>
+    this._http.delete(UrlEndpoints.apiRoot + this.qualificationsURL + `(${qulificationId})`);
+
   getUser(userId: string) {
     return this._http
       .get<any[]>(

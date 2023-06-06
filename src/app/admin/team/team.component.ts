@@ -15,10 +15,7 @@ export class TeamComponent implements OnInit {
   ngOnInit(): void {}
 
   onRemoveTeamMemberClick(memberId: number) {
-    this._divingService.deleteMember(memberId).subscribe((e) => {
-      this.teams$ = this._divingService.teams$;
-    });
-
+    
     Swal.fire({
       title: 'Are you sure?',
       text: "You won't be able to revert this!",
