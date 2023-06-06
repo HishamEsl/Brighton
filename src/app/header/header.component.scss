@@ -4,7 +4,8 @@
 // Start Header
 
 header {
-  position: absolute !important;
+  // position: absolute !important;
+  background-color: $dark-blue-color !important;
   width: 100%;
   z-index: 2;
   left: 0;
@@ -36,7 +37,7 @@ header {
 .profile-header {
   /* Your header styles when navigating to the profile module */
   position: static !important;
-  background-color: $dark-blue-color;
+  background-color: $dark-blue-color !important;
 }
 
 .logo{

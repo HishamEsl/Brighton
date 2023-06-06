@@ -189,9 +189,10 @@
     <div class="row" *ngIf="teams$|async as teams">
       <div class="col-md-3 col-6" *ngFor="let team of teams">
         <div class="card-overly text-center">
-          <div class="img-content" *ngIf="team.user.image">
+          <div class="img-content">
             <img
-              src="{{team.user.image.path}}"
+              
+              [src]="team.user.image?team.user.image.path:'../../assets/Photos/team2.png'"
               class="card-img-top"
               alt="..."
             />

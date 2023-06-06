@@ -1,0 +1,67 @@
+<div class="container image-sec ">
+    <form [formGroup]="teamForm">
+      <div class="row">
+       
+        <div class="col-md-6 col-12" *ngIf="minifiedUsers$|async as users">
+            <div class="mb-3">
+                <label for="userId">Select User</label>
+      
+                <select
+                class="form-select"
+                id="userId"
+                formControlName="userId"
+              >
+                <option value="" selected disabled> Select User</option>
+                <option
+                  [value]="user.id"
+                  *ngFor="let user of users"
+                >
+                  {{user.name}}
+                </option>
+              </select>
+              <div *ngIf="f['userId'].touched && f['userId'].errors" class="text-danger">
+                <span *ngIf="f['userId'].errors?.['required']">This value is required.!</span>
+              </div>
+              </div>
+        </div>
+        <div class="col-md-6 col-12 ">
+            <div class="mb-3">
+                <label for="position">Position</label>
+                <input type="text" class="form-control" id="position" name="position"
+                formControlName="position" [ngClass]="{
+                  'is-invalid': f['position'].touched && f['position'].errors
+                }"  />
+                <div *ngIf="f['position'].touched && f['position'].errors" class="text-danger">
+                  <span *ngIf="f['position'].errors?.['required']">This value is required.!</span>
+                </div>
+              </div>
+        </div>
+        <div class="col-md-6 col-12 ">
+            <div class="mb-3">
+                <label for="jobDescription">Job Description</label>
+                <input type="text" class="form-control" id="jobDescription" name="jobDescription"
+                formControlName="jobDescription" [ngClass]="{
+                  'is-invalid': f['jobDescription'].touched && f['jobDescription'].errors
+                }"  />
+                <div *ngIf="f['jobDescription'].touched && f['jobDescription'].errors" class="text-danger">
+                  <span *ngIf="f['jobDescription'].errors?.['required']">This value is required.!</span>
+                </div>
+              </div>
+        </div>
+      </div>
+      <div class="row mb-3">
+        <div class="col-md-6">
+            <label for="formrow-email-input"></label>
+    
+                <div class="d-grid gap-2">
+                    <button class="btn btn-form" type="button"  [disabled]="teamForm.invalid"
+                    (click)="onAddMember()">Save</button>
+                  </div>
+    
+        </div>
+    
+    </div>
+    </form>
+    </div>
+    
+    

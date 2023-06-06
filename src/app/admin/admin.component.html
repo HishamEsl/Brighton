@@ -1,0 +1,40 @@
+<section class="admin">
+<div class="container">
+    <div class="row nav">
+        <ul class="d-flex list-unstyled mt-3">
+          <li class="nav-item active">
+            <a
+              class="nav-link"
+              routerLink="/admin/image"
+              routerLinkActive="active"
+              
+              >Image
+            </a>
+          </li>
+          <li class="nav-item">
+            <a
+              class="nav-link"
+              routerLink="/admin/team"
+              routerLinkActive="active"
+             
+              >Team 
+            </a>
+          </li>
+    
+          <li class="nav-item">
+            <a
+              class="nav-link"
+              routerLink="/profile/equipment"
+              routerLinkActive="active"
+             
+              >Gallery</a
+            >
+          </li>
+        </ul>
+      </div>
+    
+      <div class="row mt-5">
+        <router-outlet></router-outlet>
+      </div>    
+</div>
+</section>

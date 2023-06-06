@@ -1,0 +1,42 @@
+<div class="container image-sec ">
+    <form [formGroup]="imageForm">
+      <div class="row">
+       
+        <div class="col-md-6 col-12">
+            <div class="row mb-3">
+                <div class="col-12">
+                  <div class="mb-3">
+                    <label for="image-upload">Upload Image</label>
+                    <input type="file" id="image-upload" accept="image/png,image/gif, image/jpeg" class="d-block" name="image-upload" (change)="onFileSelected($event) ; convertToBase64($event)"  formControlName="image" [ngClass]="{
+                      'is-invalid': f['image'].touched && f['image'].errors
+                    }"
+                    >
+                    <div *ngIf="f['image'].touched && f['image'].errors" class="text-danger">
+                      <span *ngIf="f['image'].errors?.['required']">This value is required.!</span>
+                    </div>
+                  
+                </div>
+                </div>
+              </div>
+        </div>
+        <div class="col-md-6 col-12 d-flex justify-content-center">
+            <div class="card mt-3 img-card" *ngIf="imageUrl">
+                <img [src]="imageUrl"  class="w-100  card-img">
+            </div>
+        </div>
+      </div>
+      <div class="row mb-3">
+        <div class="col-md-6">
+            <label for="formrow-email-input"></label>
+    
+                <div class="d-grid gap-2">
+                    <button class="btn btn-form" type="button"  [disabled]="imageForm.invalid"
+                    (click)="onAddImageSubmit()">Save</button>
+                  </div>
+    
+        </div>
+    
+    </div>
+    </form>
+    </div>
+    

@@ -20,6 +20,7 @@ export class DivingService {
   private remindersURL = 'odata/reminders';
   private qualificationsURL = 'odata/qualifications';
   private contactUsURL = 'EmailSender/Contact-us';
+  private minifiedUsersURL = 'odata/minifiedusers';
 
   constructor(private _http: HttpClient) {}
 
@@ -41,6 +42,31 @@ export class DivingService {
     .pipe(
       map((teams: any) => {
         return teams['value'] as ITeam[];
+      }),
+      shareReplay(1)
+    );
+
+  // post Team member
+  postTeamMember(model: any) {
+    return this._http
+      .post<any>(UrlEndpoints.apiRoot + this.teamURL, model)
+      .pipe(
+        map((member: any) => {
+          return member as any;
+        }),
+        shareReplay(1)
+      );
+  }
+
+  //Remove Member
+  deleteMember = (memberId: number) =>
+    this._http.delete(UrlEndpoints.apiRoot + this.teamURL + `(${memberId})`);
+
+  minifiedUsers$ = this._http
+    .get<IUser[]>(UrlEndpoints.apiRoot + this.minifiedUsersURL)
+    .pipe(
+      map((users: any) => {
+        return users['value'] as IUser[];
       }),
       shareReplay(1)
     );

@@ -1,0 +1,26 @@
+@import "../../assets/scss/variables";
+@import "../../assets/scss/global";
+
+
+.admin{
+
+    .nav{
+        margin-top: 48px;
+        li {
+            a{
+                color: #000;
+                font-weight: $fw-sm;
+                font-size: $fs-m   ;
+
+                @media (max-width: 767px) {
+                    font-size: $fs-xs   ;
+                  }
+
+                &.active {
+                    color: $main-red;
+                    border-bottom: 2px solid $main-red;
+                  }
+            }
+        }
+    }
+}

@@ -8,6 +8,7 @@ import { NavigationEnd, Router } from '@angular/router';
 })
 export class FooterComponent implements OnInit {
   isAuthModule = false;
+  isAdminModule = false;
 
   constructor(private router: Router) {}
 
@@ -15,6 +16,9 @@ export class FooterComponent implements OnInit {
     this.router.events.subscribe((event) => {
       if (event instanceof NavigationEnd) {
         this.isAuthModule = this.router.url.includes('auth');
+      }
+      if (event instanceof NavigationEnd) {
+        this.isAdminModule = this.router.url.includes('admin');
       }
     });
   }
