@@ -36,7 +36,7 @@ export class TeamFormComponent implements OnInit {
       jobDescription: this.teamForm.controls['jobDescription'].value,
     };
 
-    console.log(obj);
+
     this._divingService.postTeamMember(obj).subscribe((e) => {
       Swal.fire({
         position: 'top-end',

@@ -1,6 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { DivingService } from 'src/app/shared/services/diving.service';
+import Swal from 'sweetalert2';
+import { Location } from '@angular/common';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-image',
@@ -14,7 +17,9 @@ export class ImageComponent implements OnInit {
 
   constructor(
     private formBuilder: FormBuilder,
-    private _divingService: DivingService
+    private _divingService: DivingService,
+    private location: Location,
+    private router: Router
   ) {}
 
   ngOnInit(): void {
@@ -23,7 +28,23 @@ export class ImageComponent implements OnInit {
     });
   }
 
-  onAddImageSubmit() {}
+  onAddImageSubmit() {
+    const obj = {
+      path: this.base64String,
+    };
+
+    this._divingService.postImage(obj).subscribe((e) => {
+      Swal.fire({
+        position: 'top-end',
+        icon: 'success',
+        title: ' Image has been Uploaded ',
+        showConfirmButton: false,
+        timer: 1500,
+      });
+    });
+
+    this.router.navigate(['/profile']);
+  }
 
   onFileSelected(event: any) {
     const file = event.target.files[0];

@@ -21,6 +21,7 @@ export class DivingService {
   private qualificationsURL = 'odata/qualifications';
   private contactUsURL = 'EmailSender/Contact-us';
   private minifiedUsersURL = 'odata/minifiedusers';
+  private imageURL = 'odata/images';
 
   constructor(private _http: HttpClient) {}
 
@@ -47,6 +48,16 @@ export class DivingService {
     );
 
   // post Team member
+  postImage(model: any) {
+    return this._http
+      .post<any>(UrlEndpoints.apiRoot + this.imageURL, model)
+      .pipe(
+        map((image: any) => {
+          return image as any;
+        }),
+        shareReplay(1)
+      );
+  }
   postTeamMember(model: any) {
     return this._http
       .post<any>(UrlEndpoints.apiRoot + this.teamURL, model)
@@ -109,9 +120,11 @@ export class DivingService {
       );
   }
 
-    //Remove Qulification
-    deleteQulification = (qulificationId: number) =>
-    this._http.delete(UrlEndpoints.apiRoot + this.qualificationsURL + `(${qulificationId})`);
+  //Remove Qulification
+  deleteQulification = (qulificationId: number) =>
+    this._http.delete(
+      UrlEndpoints.apiRoot + this.qualificationsURL + `(${qulificationId})`
+    );
 
   getUser(userId: string) {
     return this._http
