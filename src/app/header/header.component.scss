@@ -38,3 +38,11 @@ header {
   position: static !important;
   background-color: $dark-blue-color;
 }
+
+.logo{
+  margin-bottom: 32px;
+
+  img{
+      width: 200px;
+  }
+}
