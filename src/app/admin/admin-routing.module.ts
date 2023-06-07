@@ -5,6 +5,9 @@ import { ImageComponent } from './image/image.component';
 import { TeamComponent } from './team/team.component';
 import { TeamFormComponent } from './team/team-form/team-form.component';
 import { AdminstrationComponent } from './adminstration/adminstration.component';
+import { AdminGalleryComponent } from './admin-gallery/admin-gallery.component';
+import { AdminstrationFormComponent } from './adminstration/adminstration-form/adminstration-form.component';
+import { SuperAdminGuard } from '../shared/guards/super-admin.guard';
 
 const routes: Routes = [
   {
@@ -15,7 +18,17 @@ const routes: Routes = [
       { path: 'image', component: ImageComponent },
       { path: 'team', component: TeamComponent },
       { path: 'teamForm', component: TeamFormComponent },
-      { path: 'adminstration', component: AdminstrationComponent },
+      {
+        path: 'adminstration',
+        canActivate: [SuperAdminGuard],
+        component: AdminstrationComponent,
+      },
+      {
+        path: 'adminstrationForm',
+        canActivate: [SuperAdminGuard],
+        component: AdminstrationFormComponent,
+      },
+      { path: 'gallery', component: AdminGalleryComponent },
     ],
   },
 ];

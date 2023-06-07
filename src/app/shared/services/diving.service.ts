@@ -8,6 +8,7 @@ import { IUser } from '../models/user.model';
 import { IEquipment } from '../models/profileEquipment.model';
 import { IRemender } from '../models/reminder.model';
 import { IQualifications } from '../models/profileQualification.model';
+import { IImage } from '../models/image.model';
 
 @Injectable({
   providedIn: 'root',
@@ -22,6 +23,9 @@ export class DivingService {
   private contactUsURL = 'EmailSender/Contact-us';
   private minifiedUsersURL = 'odata/minifiedusers';
   private imageURL = 'odata/images';
+  private roleURL = 'odata/roles';
+  private assignroleURL = 'odata/assignrole';
+  private adminsURL = 'odata/admins';
 
   constructor(private _http: HttpClient) {}
 
@@ -33,6 +37,18 @@ export class DivingService {
       }),
       shareReplay(1)
     );
+
+  // post Dive Gallery
+  postDive(model: any) {
+    return this._http
+      .post<any>(UrlEndpoints.apiRoot + this.divesURL, model)
+      .pipe(
+        map((dive: any) => {
+          return dive as any;
+        }),
+        shareReplay(1)
+      );
+  }
 
   teams$ = this._http
     .get<ITeam[]>(
@@ -47,6 +63,41 @@ export class DivingService {
       shareReplay(1)
     );
 
+  // get All Images
+  role$ = this._http.get<any[]>(UrlEndpoints.apiRoot + this.roleURL).pipe(
+    map((rols: any) => {
+      return rols['value'] as any[];
+    }),
+    shareReplay(1)
+  );
+  // get All Admins
+  admins$ = this._http.get<any[]>(UrlEndpoints.apiRoot + this.adminsURL).pipe(
+    map((admins: any) => {
+      return admins['value'] as any[];
+    }),
+    shareReplay(1)
+  );
+  // get All Images
+  images$ = this._http.get<IImage[]>(UrlEndpoints.apiRoot + this.imageURL).pipe(
+    map((teams: any) => {
+      return teams['value'] as IImage[];
+    }),
+    shareReplay(1)
+  );
+
+  // Get Image BY ID
+  imageById(imageId: number) {
+    return this._http
+      .get<IImage>(
+        UrlEndpoints.apiRoot + this.imageURL + `?$filter=id eq ${imageId}`
+      )
+      .pipe(
+        map((image: any) => {
+          return image['value'] as any;
+        }),
+        shareReplay(1)
+      );
+  }
   // post Team member
   postImage(model: any) {
     return this._http
@@ -58,9 +109,22 @@ export class DivingService {
         shareReplay(1)
       );
   }
+
   postTeamMember(model: any) {
     return this._http
       .post<any>(UrlEndpoints.apiRoot + this.teamURL, model)
+      .pipe(
+        map((member: any) => {
+          return member as any;
+        }),
+        shareReplay(1)
+      );
+  }
+
+  //Assign Role To Users
+  postassignroleURL(model: any) {
+    return this._http
+      .post<any>(UrlEndpoints.apiRoot + this.assignroleURL, model)
       .pipe(
         map((member: any) => {
           return member as any;

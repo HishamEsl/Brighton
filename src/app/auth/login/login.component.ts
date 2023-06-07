@@ -41,6 +41,7 @@ export class LoginComponent implements OnInit {
         })
       )
       .subscribe((e: any) => {
+        console.log(e, 'user');
         sessionStorage.setItem('US', e.name);
         sessionStorage.setItem('TOKEN', e.token);
         sessionStorage.setItem('UD', e.userId);

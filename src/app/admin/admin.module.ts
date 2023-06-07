@@ -8,6 +8,8 @@ import { SharedModule } from '../shared/shared.module';
 import { TeamComponent } from './team/team.component';
 import { TeamFormComponent } from './team/team-form/team-form.component';
 import { AdminstrationComponent } from './adminstration/adminstration.component';
+import { AdminGalleryComponent } from './admin-gallery/admin-gallery.component';
+import { AdminstrationFormComponent } from './adminstration/adminstration-form/adminstration-form.component';
 
 
 @NgModule({
@@ -17,6 +19,9 @@ import { AdminstrationComponent } from './adminstration/adminstration.component'
     TeamComponent,
     TeamFormComponent,
     AdminstrationComponent,
+    AdminGalleryComponent,
+    AdminstrationFormComponent,
+    
   ],
   imports: [CommonModule, AdminRoutingModule, SharedModule],
 })

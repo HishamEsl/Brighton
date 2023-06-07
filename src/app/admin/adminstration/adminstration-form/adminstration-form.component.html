@@ -1,0 +1,61 @@
+<div class="container image-sec ">
+    <form [formGroup]="adminForm">
+      <div class="row">
+       
+        
+        <div class="col-md-6 col-12 ">
+            <div class="mb-3">
+                <label for="email">email</label>
+                <input type="text" class="form-control" id="email" name="email"
+                formControlName="email" [ngClass]="{
+                  'is-invalid': f['email'].touched && f['email'].errors
+                }"  />
+                <div *ngIf="f['email'].touched && f['email'].errors" class="text-danger">
+                  <span *ngIf="f['email'].errors?.['required']">This value is required.!</span>
+                  <span *ngIf="f['email'].errors?.['email']">This value should be email!</span>
+                </div>
+              </div>
+        </div>
+        <div class="col-md-6 col-12" *ngIf="role$|async as roles">
+            <div class="mb-3">
+                <label for="roleId">Select User Role</label>
+      
+                <select
+                class="form-select"
+                id="roleId"
+                formControlName="roleId"
+              >
+                <option value="" selected disabled> Select User Role</option>
+                <option
+                  [value]="role.id"
+                  *ngFor="let role of roles"
+                >
+                  {{role.name}}
+                </option>
+              </select>
+              <div *ngIf="f['roleId'].touched && f['roleId'].errors" class="text-danger">
+                <span *ngIf="f['roleId'].errors?.['required']">This value is required.!</span>
+              </div>
+              </div>
+        </div>
+
+
+        <div *ngIf="errorMessage" class="text-danger">{{ errorMessage.value }}</div>
+
+      </div>
+      <div class="row mb-3">
+        <div class="col-md-6">
+            <label for="formrow-email-input"></label>
+    
+                <div class="d-grid gap-2">
+                    <button class="btn btn-form" type="button"  [disabled]="adminForm.invalid"
+                    (click)="onAddAdmin()">Save</button>
+                  </div>
+    
+        </div>
+    
+    </div>
+    </form>
+    </div>
+    
+    

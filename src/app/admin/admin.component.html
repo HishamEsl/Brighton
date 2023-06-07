@@ -20,7 +20,7 @@
               >Team 
             </a>
           </li>
-          <li class="nav-item">
+          <li class="nav-item" *ngIf="isSuperAdmain" >
             <a
               class="nav-link"
               routerLink="/admin/adminstration"
@@ -33,7 +33,7 @@
           <li class="nav-item">
             <a
               class="nav-link"
-              routerLink="/profile/equipment"
+              routerLink="/admin/gallery"
               routerLinkActive="active"
              
               >Gallery</a

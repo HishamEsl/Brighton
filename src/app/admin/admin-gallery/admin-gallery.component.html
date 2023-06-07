@@ -1,0 +1,65 @@
+<div class="container image-sec ">
+    <form [formGroup]="galleryForm">
+      <div class="row">
+       
+        <div class="col-md-6 col-12" *ngIf="images$|async as images">
+            <div class="mb-3">
+                <label for="userId">Select Image</label>
+      
+                <select
+                class="form-select"
+                id="imageId"
+                formControlName="imageId"
+                [(ngModel)]="selectedId"
+                
+              >
+                <option value="" selected disabled> Select Image</option>
+                <option
+                  [value]="image.id"
+                  *ngFor="let image of images"
+                 
+                >
+                  {{image.id}}
+                </option>
+              </select>
+              <div *ngIf="f['imageId'].touched && f['imageId'].errors" class="text-danger">
+                <span *ngIf="f['imageId'].errors?.['required']">This value is required.!</span>
+              </div>
+              </div>
+        </div>
+      
+        <div class="col-md-6 col-12 ">
+            <div class="mb-3">
+                <label for="description"> Description</label>
+                <input type="text" class="form-control" id="description" name="description"
+                formControlName="description" [ngClass]="{
+                  'is-invalid': f['description'].touched && f['description'].errors
+                }"  />
+                <div *ngIf="f['description'].touched && f['description'].errors" class="text-danger">
+                  <span *ngIf="f['description'].errors?.['required']">This value is required.!</span>
+                </div>
+              </div>
+        </div>
+
+        <div class="col-md-6 col-12 ">
+          <div class="card mt-3 img-card" *ngIf="selectedId" >
+            <img  [src]="getImagePath(selectedId)" alt="Selected Image">
+          </div>
+      </div>
+      </div>
+      <div class="row mb-3">
+        <div class="col-md-6">
+            <label for="formrow-email-input"></label>
+    
+                <div class="d-grid gap-2">
+                    <button class="btn btn-form" type="button"  [disabled]="galleryForm.invalid"
+                    (click)="onAddGallery()">Save</button>
+                  </div>
+    
+        </div>
+    
+    </div>
+    </form>
+    </div>
+    
+    
