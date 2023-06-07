@@ -65,6 +65,9 @@ h6 {
   
   
     }
+    swal2-popup swal2-modal {
+      z-index: 999999999999999999999999999999999;
+    }
 /* Importing Bootstrap SCSS file. */
 @import '~bootstrap/scss/bootstrap';
 

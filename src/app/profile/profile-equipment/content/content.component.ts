@@ -17,7 +17,6 @@ export class ContentComponent implements OnInit {
   }
 
   onRemoveClick(equipmentId: number) {
-    // this._divingService.deleteEquipment(equipmentId).subscribe();
 
     Swal.fire({
       title: 'Are you sure?',

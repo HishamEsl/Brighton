@@ -27,4 +27,19 @@
     img{
         height: 380px ;
     }
+
+
+    .edit-profile-pic{
+      z-index: 22;
+      transform: translate(-100% , -100%);
+      background-color: #FFF;
+      padding: 5px;
+      border-radius: 50%;
+      top: 35px;
+      // border: 1px solid $dark-gray-color;
+      img{
+        width: 20px !important;
+        height: 20px !important;
+      }
+    }
 }  

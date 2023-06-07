@@ -51,7 +51,6 @@ export class AdminstrationFormComponent implements OnInit {
           showConfirmButton: false,
           timer: 1500,
         });
-        this.location.back();
       });
   }
 

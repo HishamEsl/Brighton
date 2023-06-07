@@ -50,6 +50,10 @@ export class DivingService {
       );
   }
 
+  //Remove Dive Gallery
+  removeDiveGallery = (galleryId: number) =>
+    this._http.delete(UrlEndpoints.apiRoot + this.divesURL + `(${galleryId})`);
+
   teams$ = this._http
     .get<ITeam[]>(
       UrlEndpoints.apiRoot +
