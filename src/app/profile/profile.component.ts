@@ -28,6 +28,8 @@ export class ProfileComponent implements OnInit {
     const userRoles = this._auth.getUserRoles();
     if (userRoles.includes('Admin')) {
       this.isAdmain = true;
+    }else if(userRoles.includes('SuperAdmin')){
+      this.isAdmain = true;
     }
   }
 

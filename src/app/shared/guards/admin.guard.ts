@@ -26,6 +26,8 @@ export class AdminGuard implements CanActivate {
 
     if (userRoles.includes('Admin')) {
       return true;
+    } else if (userRoles.includes('SuperAdmin')) {
+      return true;
     } else {
       // Redirect to unauthorized page or perform any other action
       this.router.navigate(['/auth/login']);
