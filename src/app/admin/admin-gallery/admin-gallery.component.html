@@ -19,7 +19,7 @@
                   *ngFor="let image of images"
                  
                 >
-                  {{image.id}}
+                  {{image.description}}
                 </option>
               </select>
               <div *ngIf="f['imageId'].touched && f['imageId'].errors" class="text-danger">
@@ -41,11 +41,7 @@
               </div>
         </div>
 
-        <div class="col-md-6 col-12 ">
-          <div class="card mt-3 img-card" *ngIf="selectedId" >
-            <img  [src]="getImagePath(selectedId)" alt="Selected Image">
-          </div>
-      </div>
+    
       </div>
       <div class="row mb-3">
         <div class="col-md-6">

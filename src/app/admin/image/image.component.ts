@@ -25,12 +25,14 @@ export class ImageComponent implements OnInit {
   ngOnInit(): void {
     this.imageForm = this.formBuilder.group({
       image: ['', [Validators.required]],
+      desctiption: ['', [Validators.required]],
     });
   }
 
   onAddImageSubmit() {
     const obj = {
       path: this.base64String,
+      desctiption: this.imageForm.controls['desctiption'].value,
     };
 
     this._divingService.postImage(obj).subscribe((e) => {

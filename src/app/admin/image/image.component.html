@@ -3,8 +3,8 @@
       <div class="row">
        
         <div class="col-md-6 col-12">
-            <div class="row mb-3">
-                <div class="col-12">
+        
+                
                   <div class="mb-3">
                     <label for="image-upload">Upload Image</label>
                     <input type="file" id="image-upload" accept="image/png,image/gif, image/jpeg" class="d-block" name="image-upload" (change)="onFileSelected($event) ; convertToBase64($event)"  formControlName="image" [ngClass]="{
@@ -16,14 +16,24 @@
                     </div>
                   
                 </div>
-                </div>
-              </div>
+            
+      
         </div>
-        <div class="col-md-6 col-12 d-flex justify-content-center">
-            <div class="card mt-3 img-card" *ngIf="imageUrl">
-                <img [src]="imageUrl"  class="w-100  card-img">
+
+        <div class="col-md-6 col-12">
+          <div class="mb-3">
+            <label for="desctiption">Desctiption</label>
+            <input type="text" id="desctiption" class="form-control"  formControlName="desctiption" [ngClass]="{
+              'is-invalid': f['desctiption'].touched && f['desctiption'].errors
+            }"
+            >
+            <div *ngIf="f['desctiption'].touched && f['desctiption'].errors" class="text-danger">
+              <span *ngIf="f['desctiption'].errors?.['required']">This value is required.!</span>
             </div>
+          
         </div>
+        </div>
+        
       </div>
       <div class="row mb-3">
         <div class="col-md-6">
